@@ -10,7 +10,7 @@ $dnsclient = <<-SHELL
   echo -e "nameserver $1\ndomain aula104.local">/etc/resolv.conf
 SHELL
 
-$apache1 = << -SHELL
+$apache1 = <<-SHELL
   sudo apt update
   sudo apt -y install apache2
 SHELL
@@ -46,6 +46,7 @@ Vagrant.configure("2") do |config|
       end
       guest.vm.provision "shell", name: "dns-server", path: "enable-bind9.sh", args: DNSIP
     end
+  end
 
 
   # clients DHCP
